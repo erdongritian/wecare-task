@@ -17,12 +17,16 @@ spring-boot + quartz + freemaker +bootstrap
 
  5,登录，username:admin   password:1
 
- 6,添加任务，
+ 6,添加任务
+
     serviceName:demoService
+
     description:test
+
     CronExpression:0/30 * * * * ?
 
 （quartz的集群模式需要服务器进行时间同步）
+
  1,Never run clustering on separate machines,
  unless their clocks are synchronized using some form of time-sync service (daemon)
  that runs very regularly (the clocks must be within a second of each other).
