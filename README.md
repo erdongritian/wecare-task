@@ -6,11 +6,17 @@ spring-boot + quartz + freemaker +bootstrap
 这个项目也集成了spring-data,可以用来写业务。
 
 说明：
+
  1，数据库脚本：resources/tables_mysql.sql
+
  2,配置application.properties和quartz.properties中的数据源信息
+
  3，启动应用 StartWebApplication
+
  4,访问http://127.0.0.1:8098/
+
  5,登录，username:admin   password:1
+
  6,添加任务，
     serviceName:demoService
     description:test
