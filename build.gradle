@@ -1,0 +1,33 @@
+plugins {
+    id 'org.springframework.boot' version '1.5.6.RELEASE'
+    id 'java'
+}
+
+group 'com.htxa.wecare'
+version '1.0'
+
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+
+repositories {
+    maven{ url 'http://maven.aliyun.com/nexus/content/groups/public/'}
+    mavenCentral()
+}
+
+dependencies {
+    compile(
+            "org.springframework.boot:spring-boot-starter-freemarker",
+            "org.springframework.boot:spring-boot-starter-data-jpa",
+            "org.hibernate:hibernate-core:4.3.11.Final",
+            "org.hibernate:hibernate-entitymanager:4.3.11.Final",
+            "org.projectlombok:lombok:1.16.8",
+            "org.quartz-scheduler:quartz:2.2.3",
+            "mysql:mysql-connector-java:5.1.29",
+            "com.zaxxer:HikariCP:2.6.1",
+            "joda-time:joda-time:2.9.9"
+    )
+    testCompile(
+            "junit:junit:4.11",
+            "org.springframework.boot:spring-boot-starter-test"
+    )
+}
