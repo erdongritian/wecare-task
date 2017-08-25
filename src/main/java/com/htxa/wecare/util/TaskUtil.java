@@ -39,11 +39,8 @@ public class TaskUtil {
             JobDetail jobDetail = newJob(DetailQuartzJobBean.class).withIdentity(taskEntity.getTaskService())
                     .usingJobData(map).storeDurably().requestRecovery().build();
 
-            JobDataMap cronJobMap = new JobDataMap();
-            cronJobMap.put("jobDetail", jobDetail);
-
             CronTrigger cronTrigger=newTrigger().forJob(jobDetail).withIdentity(taskEntity.getTaskService(), Scheduler.DEFAULT_GROUP)
-                    .usingJobData(cronJobMap).withDescription(taskEntity.getDescription())
+                    .withDescription(taskEntity.getDescription())
                     .withSchedule(cronSchedule(taskEntity.getCronExpression())).build();
             stdScheduler.scheduleJob(jobDetail,cronTrigger);
             return "SUCCESS";
@@ -81,11 +78,8 @@ public class TaskUtil {
             JobKey jobKey=new JobKey(taskEntity.getTaskService(),null);
             JobDetail jobDetail=stdScheduler.getJobDetail(jobKey);
 
-            JobDataMap cronJobMap = new JobDataMap();
-            cronJobMap.put("jobDetail", jobDetail);
-
             CronTrigger cronTrigger=newTrigger().forJob(jobDetail).withIdentity(taskEntity.getTaskService(), Scheduler.DEFAULT_GROUP)
-                    .usingJobData(cronJobMap).withDescription(taskEntity.getDescription())
+                    .withDescription(taskEntity.getDescription())
                     .withSchedule(cronSchedule(taskEntity.getCronExpression())).build();
 
             TriggerKey triggerKey=new TriggerKey(taskEntity.getTaskService(), null);
@@ -154,12 +148,5 @@ public class TaskUtil {
             return false;
         }
     }
-
-
-
-
-
-
-
 
 }
